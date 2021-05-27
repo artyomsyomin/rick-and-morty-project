@@ -36,42 +36,40 @@ const Card = ({ episodesInfo, loading, searchInput }) => {
 
       cardInfo = seasons.map((seasonName) => {
         return (
-          <div className="card-container" key={seasonName}>
-            <div>
-              <h1>{seasonName}</h1>
-              {episodesInfo
-                .filter((episode) => {
-                  if (!searchInput) {
-                    return episode;
-                  } else if (
-                    episode.name
-                      .toLowerCase()
-                      .includes(searchInput.toLowerCase())
-                  ) {
-                    return episode;
-                  }
-                })
-                .map((episode) => {
-                  if (episode.episode.slice(0, 3) === seasonName) {
-                    return (
-                      <Link key={episode.id} to={`/${episode.id}`}>
+          <div key={seasonName}>
+            <h1 className='season-number'>{seasonName}</h1>
+            {episodesInfo
+              .filter((episode) => {
+                if (!searchInput) {
+                  return episode;
+                } else if (
+                  episode.name.toLowerCase().includes(searchInput.toLowerCase())
+                ) {
+                  return episode;
+                }
+              })
+              .map((episode) => {
+                if (episode.episode.slice(0, 3) === seasonName) {
+                  return (
+                    <div key={episode.id} className="episodes-container">
+                      <Link to={`/${episode.id}`}>
                         <div className="card">
-                          <h2>{episode.name}</h2>
-                          <p>{episode.air_date}</p>
-                          <p>Season: {episode.episode.slice(2, 3)}</p>
-                          <p>Episode: {episode.episode.slice(4)}</p>
+                          <h2 className='item-b'>{episode.name}</h2>
+                          <p className='item-c'>{episode.air_date}</p>
+                          <p className='item-d'>Season: {episode.episode.slice(2, 3)}</p>
+                          <p className='item-a'>{episode.episode.slice(4)}</p>
                         </div>
                       </Link>
-                    );
-                  }
-                })}
-            </div>
+                    </div>
+                  );
+                }
+              })}
           </div>
         );
       });
     }
   }
-  return cardInfo;
+  return <div className="card-container">{cardInfo}</div>;
 };
 
 export default Card;

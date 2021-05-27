@@ -1,0 +1,35 @@
+.episode-info-container {
+  width: 90%;
+  margin: auto;
+}
+
+.character-info-container {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  align-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.episode-info-description {
+    border-bottom: 3px solid #eee;
+    margin: 100px 20px 40px;
+}
+
+.episode-info-item {
+  text-align: center;
+  width: auto;
+  border: 1px solid #eee;
+  box-shadow: 0 2px 3px #ccc;
+  padding: 10px;
+  margin: 20px 20px;
+  box-sizing: border-box;
+  flex-grow: 3;
+  position: relative;
+  background-color: rgb(250, 250, 250);
+}
+
+.info-image {
+  border-radius: 50%;
+  width: 10rem;
+}

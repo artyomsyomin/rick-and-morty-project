@@ -33,7 +33,6 @@ const Search = () => {
     fetchEpisodes(page);
   };
 
-  let searchedTitle = '';
 
   const inputHandler = (e) => {
     setSearchInput(e.target.value);

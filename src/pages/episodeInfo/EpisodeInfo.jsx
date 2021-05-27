@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
+import './episodeInfo.css';
+
 const EpisodeInfo = ({ match }) => {
   console.log(match);
 
@@ -19,14 +21,9 @@ const EpisodeInfo = ({ match }) => {
       return fetchCharData(charUrl);
     });
     Promise.all(charsArray).then((chars) => {
-        console.log(chars)
-        setCharList(chars);
-    })
-    console.log('OOOOOOOOOOOOOOOOOOO')
-    // console.log(charsArray)
-    // setCharList(charsArray);
-
-    console.log('Fatch ended-===1');
+      console.log(chars);
+      setCharList(chars);
+    });
 
     if (data) {
       setEpisodeInfo(data);
@@ -37,16 +34,10 @@ const EpisodeInfo = ({ match }) => {
     console.log(data);
   };
 
-//   const charsArray = [];
-
   const fetchCharData = async (charUrl) => {
     const charRes = await fetch(charUrl);
     const charData = await charRes.json();
-     return charData;
-    // console.log('charData')
-    // console.log(charData)
-    //  return charsArray.push(charData);
-    // setCharList(charsArray);
+    return charData;
   };
   console.log(charList);
 
@@ -60,7 +51,7 @@ const EpisodeInfo = ({ match }) => {
     ? (episodeData = <h1>Loading...</h1>)
     : (episodeData = charList.map((character) => {
         return (
-          <div key={character.id}>
+          <div key={character.id} className="episode-info-item">
             <h1>{character.name}</h1>
             <img
               className="info-image"
@@ -71,18 +62,23 @@ const EpisodeInfo = ({ match }) => {
             <p>Species: {character.species}</p>
             <p>Status: {character.status}</p>
             <p>Location: {character.location.name}</p>
-            <p>Появлялся в следующем количестве эпизодов: {character.episode.length} </p>
+            <p>
+              Episodes:{' '}
+              {character.episode.length}{' '}
+            </p>
           </div>
         );
       }));
 
   return (
-    <div>
-      <h1>Episode Info</h1>
-      <h2>{episodeInfo.name}</h2>
-      <p>{episodeInfo.air_date}</p>
-      <p>{episodeInfo.episode}</p>
-      {episodeData}
+    <div className="episode-info-container">
+        <div className='episode-info-description'>
+            
+      <h2>Episode Title: {episodeInfo.name}</h2>
+      <p>Release Date: {episodeInfo.air_date}</p>
+      <p>Season/Episode: {episodeInfo.episode}</p>
+        </div>
+      <div className="character-info-container">{episodeData}</div>
     </div>
   );
 };

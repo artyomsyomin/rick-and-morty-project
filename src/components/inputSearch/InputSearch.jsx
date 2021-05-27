@@ -1,11 +1,12 @@
 import React from 'react';
+import './inputSearch.css'
 
 const InputSearch = ({inputHandler}) => {
   return (
-    <div>
-      <h2>JUST START TYPING...</h2>
-      <input
-        placeholder="Type episode's name"
+    <div  className='input-search-container'>
+      {/* <h2>Type title here...</h2> */}
+      <input className='input-search'
+        placeholder="Type episode's title"
         type="text"
         id="search"
         onChange={(e) => inputHandler(e)}

@@ -9,13 +9,15 @@
   }
   
   .pagination {
-      background-color: black;
+      background-color: rgb(109, 109, 109);
+      border-radius: 30%;
       color: white;
       padding: 14px 25px;
       text-align: center;
       text-decoration: none;
       display: inline-block;
       text-decoration: none;
+      transition: background-color 0.3s ease-in-out
   }
   
   .pagination:hover {
