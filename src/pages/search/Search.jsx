@@ -1,16 +1,18 @@
 import React, { useState, useEffect } from 'react';
 
 import Card from '../../components/card/Card.jsx';
+import Pagination from '../../components/pagination/Pagination.jsx'
 
-const url = 'https://rickandmortyapi.com/api/episode?page=1';
+const url = 'https://rickandmortyapi.com/api/episode?page=';
+// const page = 1
 
 const Search = () => {
   const [episodesInfo, setEpisodesInfo] = useState('');
   const [loading, setLoading] = useState(true);
 
-  const fetchEpisodes = async () => {
+  const fetchEpisodes = async (page=1) => {
     setLoading(true);
-    const res = await fetch(url);
+    const res = await fetch(url+page);
     const data = await res.json();
     console.log("Fatch ended")
     if (data.results) {
@@ -26,14 +28,20 @@ const Search = () => {
       fetchEpisodes();
 }, []);
 
+const paginate = (page) => {
+    fetchEpisodes(page)
+}
+
 console.log(episodesInfo);
 console.log(episodesInfo.results);
+console.log(episodesInfo.info);
 
 
   return (
     <div>
       <h1>Search Page</h1>
       <Card episodesInfo={episodesInfo.results} loading={loading}/>
+      <Pagination loading={loading} numOfPage={episodesInfo.info} paginate={paginate}/>
     </div>
   );
 };

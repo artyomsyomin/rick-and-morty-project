@@ -1,0 +1,26 @@
+.card-container {
+    margin: auto;
+  /* display: flex; */
+  justify-content: center;
+  /* align-items: stretch; */
+  align-content: center;
+  /* flex-wrap: wrap; */
+}
+
+.card {
+    text-align: center;
+  width: 80%;
+  border: 1px solid #eee;
+  box-shadow: 0 2px 3px #ccc;
+  padding: 10px;
+  margin: 20px auto ;
+  box-sizing: border-box;
+  flex-grow: 3;
+  position: relative;
+}
+
+.card:hover {
+    background-color: rgb(233, 233, 233);
+    box-shadow: 0 4px 5px rgb(184, 184, 184);
+    border: 2px solid rgb(233, 233, 233);
+  }

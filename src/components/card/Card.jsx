@@ -1,4 +1,5 @@
 import React from 'react';
+import './card.css';
 
 const Card = ({ episodesInfo, loading }) => {
   //   console.log(episodesInfo);
@@ -24,20 +25,22 @@ const Card = ({ episodesInfo, loading }) => {
 
       cardInfo = seasons.map((seasonName) => {
         return (
-          <div key={seasonName}>
-            <h1>{seasonName}</h1>
-            {episodesInfo.map((episode) => {
-              if (episode.episode.slice(0, 3) === seasonName) {
-                return (
-                  <div key={episode.id}>
-                    <h2>{episode.name}</h2>
-                    <p>{episode.air_date}</p>
-                    <p>Season: {episode.episode.slice(1, 3)}</p>
-                    <p>Episode: {episode.episode.slice(4)}</p>
-                  </div>
-                );
-              }
-            })}
+          <div className="card-container" key={seasonName}>
+            <div>
+              <h1>{seasonName}</h1>
+              {episodesInfo.map((episode) => {
+                if (episode.episode.slice(0, 3) === seasonName) {
+                  return (
+                    <div key={episode.id} className="card">
+                      <h2>{episode.name}</h2>
+                      <p>{episode.air_date}</p>
+                      <p>Season: {episode.episode.slice(1, 3)}</p>
+                      <p>Episode: {episode.episode.slice(4)}</p>
+                    </div>
+                  );
+                }
+              })}
+            </div>
           </div>
         );
       });

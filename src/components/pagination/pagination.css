@@ -1,0 +1,30 @@
+.pagination-items {
+    list-style-type: none;
+    text-align: center;
+  }
+  
+  .pagination-item {
+    display: inline-block;
+    margin: 4px;
+  }
+  
+  .pagination {
+      background-color: black;
+      color: white;
+      padding: 14px 25px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      text-decoration: none;
+  }
+  
+  .pagination:hover {
+    background-color: rgb(32, 32, 32);
+    color: white;
+    cursor: pointer;
+  }
+  
+  .pagination-container {
+    width: 80%;
+    margin: 50px auto;
+  }
