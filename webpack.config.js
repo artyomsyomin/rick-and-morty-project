@@ -8,7 +8,6 @@ module.exports = {
   mode: 'development',
   entry: {
     main: ['@babel/polyfill', './index.jsx'],
-    // app: ['@babel/polyfill', './app.jsx'],
   },
   output: {
     filename: '[name].[contenthash].js',

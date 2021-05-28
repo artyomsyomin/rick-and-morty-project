@@ -4,8 +4,6 @@ import App from './App.jsx';
 
 import { BrowserRouter, HashRouter } from 'react-router-dom';
 
-import './styles/styles.css';
-
 import { Provider } from 'react-redux';
 import store from './redux/store';
 
