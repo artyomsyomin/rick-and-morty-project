@@ -2,7 +2,7 @@ import { render } from 'react-dom';
 import React from 'react';
 import App from './App.jsx';
 
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, HashRouter } from 'react-router-dom';
 
 import './styles/styles.css';
 
@@ -12,7 +12,9 @@ import store from './redux/store';
 render(
   <Provider store={store}>
     <BrowserRouter>
-      <App />
+      <HashRouter>
+        <App />
+      </HashRouter>
     </BrowserRouter>
   </Provider>,
   document.getElementById('app')

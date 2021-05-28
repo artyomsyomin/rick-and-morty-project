@@ -1,0 +1,25 @@
+.header {
+    width: 100%;
+    box-shadow: 0 2px 3px rgb(143, 143, 143);
+    margin: auto;
+    height: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    flex-wrap: wrap;
+    font-weight: lighter;
+  }
+  
+  .menu-item {
+    color: rgb(73, 73, 73);
+    font-size: 2rem;
+    margin: 2px 12px;
+    text-transform: uppercase;
+  }
+  
+  .menu-item:hover {
+    cursor: pointer;
+    color: rgb(221, 218, 35);
+  }
+  

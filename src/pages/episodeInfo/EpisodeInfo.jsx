@@ -14,7 +14,7 @@ const EpisodeInfo = ({
   charList,
   episodeInfo,
 }) => {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
   const fetchEpisodeInfo = async () => {

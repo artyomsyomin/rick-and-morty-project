@@ -61,7 +61,6 @@ const Search = ({
       ))
     : (searchOutput = (
         <div>
-          <h1>Search Page</h1>
           <InputSearch inputHandler={inputHandler} />
           <Card
             episodesInfo={episodesInfo.results}
