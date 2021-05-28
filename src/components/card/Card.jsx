@@ -32,12 +32,10 @@ const Card = ({ episodesInfo, loading, searchInput }) => {
           }
         });
 
-      console.log(seasons);
-
       cardInfo = seasons.map((seasonName) => {
         return (
           <div key={seasonName}>
-            <h1 className='season-number'>{seasonName}</h1>
+            <h1 className="season-number">{seasonName}</h1>
             {episodesInfo
               .filter((episode) => {
                 if (!searchInput) {
@@ -54,10 +52,12 @@ const Card = ({ episodesInfo, loading, searchInput }) => {
                     <div key={episode.id} className="episodes-container">
                       <Link to={`/${episode.id}`}>
                         <div className="card">
-                          <h2 className='item-b'>{episode.name}</h2>
-                          <p className='item-c'>{episode.air_date}</p>
-                          <p className='item-d'>Season: {episode.episode.slice(2, 3)}</p>
-                          <p className='item-a'>{episode.episode.slice(4)}</p>
+                          <h2 className="item-b">{episode.name}</h2>
+                          <p className="item-c">{episode.air_date}</p>
+                          <p className="item-d">
+                            Season: {episode.episode.slice(2, 3)}
+                          </p>
+                          <p className="item-a">{episode.episode.slice(4)}</p>
                         </div>
                       </Link>
                     </div>

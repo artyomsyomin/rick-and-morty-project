@@ -1,5 +1,5 @@
 .input-search {
-    text-align: center;
+  text-align: center;
   width: 60%;
   padding: 12px 20px;
   margin: 24px auto;
@@ -9,16 +9,13 @@
   border-right: none;
   border-bottom: 4px solid rgb(109, 109, 109);
   transition: width 0.4s ease-in-out;
- 
 }
 
-input[type=text]:focus {
-    border-top: none;
-  border-left: none;
-  border-right: none;
-    border-bottom: 4px solid #555;
-    width: 100%;
-  }
+input[type='text']:focus {
+  border-bottom: 4px solid #555;
+  width: 100%;
+  outline-width: 0px;
+}
 
 .input-search-container {
   width: 80%;

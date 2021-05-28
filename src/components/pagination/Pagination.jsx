@@ -9,12 +9,11 @@ const Pagination = ({ loading, numOfPage, paginate }) => {
 
     if (pages) {
       for (var i = 1; i <= pages; i++) {
-        console.log(i);
         pagesArray.push(i);
       }
 
       paginationInfo = (
-        <div  className="pagination-container">
+        <div className="pagination-container">
           <ul className="pagination-items">
             {pagesArray.map((page) => (
               <li key={page} className="pagination-item">
