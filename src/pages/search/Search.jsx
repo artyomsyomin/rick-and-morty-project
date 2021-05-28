@@ -7,6 +7,7 @@ import InputSearch from '../../components/inputSearch/InputSearch.jsx';
 import {
   setEpisodesInfo,
   setSearchInput,
+  removeSearchInput,
 } from '../../redux/actions/searchAction';
 import { removeEpisodeInfo } from '../../redux/actions/episodeAction';
 
@@ -20,22 +21,28 @@ const Search = ({
   setEpisodesInfo,
   setSearchInput,
   removeEpisodeInfo,
+  removeSearchInput,
 }) => {
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   const fetchEpisodes = async (page = 1) => {
     setLoading(true);
-    const res = await fetch(url + page);
-    const data = await res.json();
-    if (data.results) {
+
+    try {
+      const res = await fetch(url + page);
+      const data = await res.json();
       setEpisodesInfo(data);
-    } else {
+    } catch (e) {
       setEpisodesInfo('');
+      setError(true);
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   };
 
   useEffect(() => {
+    removeSearchInput();
     fetchEpisodes();
     removeEpisodeInfo();
   }, []);
@@ -47,23 +54,28 @@ const Search = ({
   const inputHandler = (e) => {
     setSearchInput(e.target.value);
   };
-
-  return (
-    <div>
-      <h1>Search Page</h1>
-      <InputSearch inputHandler={inputHandler} />
-      <Card
-        episodesInfo={episodesInfo.results}
-        loading={loading}
-        searchInput={searchInput}
-      />
-      <Pagination
-        loading={loading}
-        numOfPage={episodesInfo.info}
-        paginate={paginate}
-      />
-    </div>
-  );
+  let searchOutput = '';
+  error
+    ? (searchOutput = (
+        <h1 style={{ textAlign: 'center' }}>Something went wrong :(</h1>
+      ))
+    : (searchOutput = (
+        <div>
+          <h1>Search Page</h1>
+          <InputSearch inputHandler={inputHandler} />
+          <Card
+            episodesInfo={episodesInfo.results}
+            loading={loading}
+            searchInput={searchInput}
+          />
+          <Pagination
+            loading={loading}
+            numOfPage={episodesInfo.info}
+            paginate={paginate}
+          />
+        </div>
+      ));
+  return searchOutput;
 };
 
 export default connect(
@@ -71,5 +83,5 @@ export default connect(
     episodesInfo: state.searchReducer.episodesInfo,
     searchInput: state.searchReducer.searchInput,
   }),
-  { setSearchInput, setEpisodesInfo, removeEpisodeInfo }
+  { setSearchInput, setEpisodesInfo, removeEpisodeInfo, removeSearchInput }
 )(Search);

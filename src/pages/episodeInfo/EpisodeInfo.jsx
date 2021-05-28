@@ -15,32 +15,37 @@ const EpisodeInfo = ({
   episodeInfo,
 }) => {
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   const fetchEpisodeInfo = async () => {
     setLoading(true);
-    const res = await fetch(
-      'https://rickandmortyapi.com/api/episode' + match.url
-    );
-    const data = await res.json();
-    const charsArray = data.characters.map((charUrl) => {
-      return fetchCharData(charUrl);
-    });
-    Promise.all(charsArray).then((chars) => {
-      setCharList(chars);
-    });
-
-    if (data) {
+    try {
+      const res = await fetch(
+        'https://rickandmortyapi.com/api/episode' + match.url
+      );
+      const data = await res.json();
+      const charsArray = data.characters.map((charUrl) => {
+        return fetchCharData(charUrl);
+      });
+      Promise.all(charsArray).then((chars) => {
+        setCharList(chars);
+      });
       setEpisodeInfo(data);
-    } else {
-      setEpisodeInfo('');
+    } catch (e) {
+      setError(true);
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   };
 
   const fetchCharData = async (charUrl) => {
-    const charRes = await fetch(charUrl);
-    const charData = await charRes.json();
-    return charData;
+    try {
+      const charRes = await fetch(charUrl);
+      const charData = await charRes.json();
+      return charData;
+    } catch (e) {
+      setError(true);
+    }
   };
 
   useEffect(() => {
@@ -49,26 +54,29 @@ const EpisodeInfo = ({
   }, []);
 
   let episodeData = '';
-
-  loading
-    ? (episodeData = <h1>Loading...</h1>)
-    : (episodeData = charList.map((character) => {
-        return (
-          <div key={character.id} className="episode-info-item">
-            <h1>{character.name}</h1>
-            <img
-              className="info-image"
-              src={character.image}
-              alt="character-avatar"
-            />
-            <p>Gender: {character.gender}</p>
-            <p>Species: {character.species}</p>
-            <p>Status: {character.status}</p>
-            <p>Location: {character.location.name}</p>
-            <p>Episodes: {character.episode.length} </p>
-          </div>
-        );
-      }));
+  if (loading) {
+    episodeData = <h1>Loading...</h1>;
+  } else if (error) {
+    episodeData = <h1>Something went wrong :(</h1>;
+  } else {
+    episodeData = charList.map((character) => {
+      return (
+        <div key={character.id} className="episode-info-item">
+          <h1>{character.name}</h1>
+          <img
+            className="info-image"
+            src={character.image}
+            alt="character-avatar"
+          />
+          <p>Gender: {character.gender}</p>
+          <p>Species: {character.species}</p>
+          <p>Status: {character.status}</p>
+          <p>Location: {character.location.name}</p>
+          <p>Episodes: {character.episode.length} </p>
+        </div>
+      );
+    });
+  }
 
   return (
     <div className="episode-info-container">
