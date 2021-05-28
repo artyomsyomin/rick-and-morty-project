@@ -11,9 +11,27 @@
   flex-wrap: wrap;
 }
 
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.episode-info-title {
+  text-align: left;
+  margin: 30px 5%;
+  text-transform: uppercase;
+  color: rgb(73, 73, 73);
+  text-decoration: underline rgb(221, 218, 35);
+}
+
 .episode-info-description {
-    border-bottom: 3px solid #eee;
-    margin: 100px 20px 40px;
+  border-bottom: 3px solid #eee;
+  margin: 100px 20px 40px;
+}
+
+.char-name {
+  color: rgb(73, 73, 73);
+  text-decoration: underline rgb(221, 218, 35);
 }
 
 .episode-info-item {
@@ -27,6 +45,19 @@
   flex-grow: 3;
   position: relative;
   background-color: rgb(250, 250, 250);
+
+  background: linear-gradient(
+      to left,
+      rgb(250, 250, 250) 50%,
+      rgb(219, 216, 19) 50%
+    )
+    right;
+  background-size: 200%;
+  transition: 0.5s ease-out;
+}
+
+.episode-info-item:hover {
+  background-position: left;
 }
 
 .info-image {

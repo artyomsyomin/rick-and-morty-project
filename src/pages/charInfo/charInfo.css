@@ -1,0 +1,79 @@
+.char-info-container {
+  width: 90%;
+  margin: auto;
+  text-align: center;
+}
+
+.info-title {
+  text-align: left;
+  margin: 30px 5%;
+  text-transform: uppercase;
+  color: rgb(73, 73, 73);
+  text-decoration: underline rgb(221, 218, 35);
+}
+
+.char-name-info {
+  font-size: 2rem;
+  color: rgb(73, 73, 73);
+  text-decoration: underline rgb(170, 168, 45);
+}
+
+.char-info-stats {
+  font-size: 1.2rem;
+  margin: 8px;
+  font-weight: bolder;
+}
+
+.char-location {
+  background-color: rgb(231, 231, 231);
+  box-shadow: 2px 3px 4px #ccc;
+  margin: auto;
+  max-width: 340px;
+  color: rgb(107, 107, 107);
+  border-radius: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  align-content: flex-start;
+  flex-wrap: wrap;
+  padding: 10px;
+  background: linear-gradient(
+      to left,
+      rgb(231, 231, 231) 50%,
+      rgb(219, 216, 19) 50%
+    )
+    right;
+  background-size: 200%;
+  transition: 0.5s ease-out;
+  cursor: pointer;
+}
+
+.char-location:hover {
+  background-position: left;
+  background-color: rgb(219, 216, 19);
+  color: rgb(68, 68, 68);
+  box-shadow: 1px 2px 3px rgb(177, 177, 177);
+}
+
+.location-name {
+  padding: 1rem;
+  font-size: 1.5rem;
+}
+
+.char-info-image {
+  border-radius: 50%;
+  width: 12rem;
+}
+
+.char-card {
+  text-align: center;
+  width: auto;
+  border: 1px solid #eee;
+  box-shadow: 0 2px 3px #ccc;
+  padding: 30px;
+  margin: 20px 20px;
+  box-sizing: border-box;
+  flex-grow: 3;
+  position: relative;
+  background-color: rgb(250, 250, 250);
+}
