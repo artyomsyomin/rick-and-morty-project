@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import './episodeInfo.css';
 import { connect } from 'react-redux';
 
+import { removeCharData } from '../../redux/actions/charAction';
 import { removeSearchInput } from '../../redux/actions/searchAction';
 import { setEpisodeInfo, setCharList } from '../../redux/actions/episodeAction';
 
@@ -15,6 +16,7 @@ const EpisodeInfo = ({
   setCharList,
   charList,
   episodeInfo,
+  removeCharData,
 }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -52,6 +54,7 @@ const EpisodeInfo = ({
 
   useEffect(() => {
     removeSearchInput();
+    removeCharData();
     fetchEpisodeInfo();
   }, []);
 
@@ -76,9 +79,9 @@ const EpisodeInfo = ({
             <p>Status: {character.status}</p>
             <p>Location: {character.location.name}</p>
             <p>
-          Appears in: {character.episode.length}{' '}
-          {character.episode.length > 1 ? 'episodes' : 'episode'}
-        </p>
+              Appears in: {character.episode.length}{' '}
+              {character.episode.length > 1 ? 'episodes' : 'episode'}
+            </p>
           </div>
         </Link>
       );
@@ -87,7 +90,7 @@ const EpisodeInfo = ({
 
   return (
     <div className="episode-info-container">
-      <h1 className='episode-info-title'>Episode Info</h1>
+      <h1 className="episode-info-title">Episode Info</h1>
       <div className="episode-info-description">
         <h2>Episode Title: {episodeInfo.name}</h2>
         <p>Release Date: {episodeInfo.air_date}</p>
@@ -103,5 +106,5 @@ export default connect(
     episodeInfo: state.episodeReducer.episodeInfo,
     charList: state.episodeReducer.charList,
   }),
-  { removeSearchInput, setEpisodeInfo, setCharList }
+  { removeSearchInput, setEpisodeInfo, setCharList, removeCharData }
 )(EpisodeInfo);

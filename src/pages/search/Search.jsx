@@ -4,6 +4,7 @@ import Card from '../../components/card/Card.jsx';
 import Pagination from '../../components/pagination/Pagination.jsx';
 import InputSearch from '../../components/inputSearch/InputSearch.jsx';
 
+import { removeCharData } from '../../redux/actions/charAction';
 import {
   setEpisodesInfo,
   setSearchInput,
@@ -22,6 +23,7 @@ const Search = ({
   setSearchInput,
   removeEpisodeInfo,
   removeSearchInput,
+  removeCharData,
 }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
@@ -43,6 +45,7 @@ const Search = ({
 
   useEffect(() => {
     removeSearchInput();
+    removeCharData();
     fetchEpisodes();
     removeEpisodeInfo();
   }, []);
@@ -82,5 +85,11 @@ export default connect(
     episodesInfo: state.searchReducer.episodesInfo,
     searchInput: state.searchReducer.searchInput,
   }),
-  { setSearchInput, setEpisodesInfo, removeEpisodeInfo, removeSearchInput }
+  {
+    setSearchInput,
+    setEpisodesInfo,
+    removeEpisodeInfo,
+    removeSearchInput,
+    removeCharData,
+  }
 )(Search);
