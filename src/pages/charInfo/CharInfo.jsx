@@ -9,7 +9,6 @@ import { setCharData } from '../../redux/actions/charAction';
 const charUrl = 'https://rickandmortyapi.com/api/character/';
 
 const CharInfo = ({ match, setCharData, charData }) => {
-  //   const [charData, setCharData] = useState('');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
